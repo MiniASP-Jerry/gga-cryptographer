@@ -13,7 +13,7 @@ namespace gga_cryptographer
             var encoded = crypto.AESEncript(toEncode, key);
             var decoded = crypto.AESDecript(toDecode, key);
             Console.WriteLine($"加密後：{encoded}");
-            Console.WriteLine($"加密後：{decoded}");
+            Console.WriteLine($"解密後：{decoded}");
         }
     }
 }

@@ -6,4 +6,16 @@
     <RootNamespace>gga_cryptographer</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="Key.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ToDecrypt.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ToEncrypt.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

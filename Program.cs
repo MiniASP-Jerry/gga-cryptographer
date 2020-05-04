@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace gga_cryptographer
 {
@@ -6,14 +7,24 @@ namespace gga_cryptographer
     {
         static void Main(string[] args)
         {
-            var key = args[0];
-            var toEncode = args[1];
-            var toDecode = args[2];
-            var crypto = new Cryptographer();
-            var encoded = crypto.AESEncript(toEncode, key);
-            var decoded = crypto.AESDecript(toDecode, key);
-            Console.WriteLine($"加密後：{encoded}");
-            Console.WriteLine($"解密後：{decoded}");
+            string ciphertext, plaintext;
+            var cryptographer = new Cryptographer();
+
+            var key = File.ReadAllText("Key.txt");
+            var toEncrypt = File.ReadAllText("ToEncrypt.txt");
+            var toDecrypt = File.ReadAllText("ToDecrypt.txt");
+
+            if (!string.IsNullOrEmpty(toEncrypt))
+            {
+                ciphertext = cryptographer.AESEncript(toEncrypt, key);
+                Console.WriteLine($"加密結果：{ciphertext}");
+            }
+
+            if (!string.IsNullOrEmpty(toDecrypt))
+            {
+                plaintext = cryptographer.AESDecript(toDecrypt, key);
+                Console.WriteLine($"解密結果：{plaintext}");
+            }
         }
     }
 }

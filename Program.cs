@@ -25,6 +25,8 @@ namespace gga_cryptographer
                 plaintext = cryptographer.AESDecript(toDecrypt, key);
                 Console.WriteLine($"解密結果：{plaintext}");
             }
+
+            Console.ReadLine();
         }
     }
 }

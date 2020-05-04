@@ -14,16 +14,30 @@ namespace gga_cryptographer
             var toEncrypt = File.ReadAllText("ToEncrypt.txt");
             var toDecrypt = File.ReadAllText("ToDecrypt.txt");
 
-            if (!string.IsNullOrEmpty(toEncrypt))
+            try
             {
-                ciphertext = cryptographer.AESEncript(toEncrypt, key);
-                Console.WriteLine($"加密結果：{ciphertext}");
+                if (!string.IsNullOrEmpty(toEncrypt))
+                {
+                    ciphertext = cryptographer.AESEncript(toEncrypt, key);
+                    Console.WriteLine($"加密結果：{ciphertext}");
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("加密失敗！");
             }
 
-            if (!string.IsNullOrEmpty(toDecrypt))
+            try
             {
-                plaintext = cryptographer.AESDecript(toDecrypt, key);
-                Console.WriteLine($"解密結果：{plaintext}");
+                if (!string.IsNullOrEmpty(toDecrypt))
+                {
+                    plaintext = cryptographer.AESDecript(toDecrypt, key);
+                    Console.WriteLine($"解密結果：{plaintext}");
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("解密失敗！");
             }
 
             Console.ReadLine();
